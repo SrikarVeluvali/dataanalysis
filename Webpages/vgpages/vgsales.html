@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Videogame Sales Analysis</title>
+    <link rel="stylesheet" href="vgsales.css">
+    <link rel="shortcut icon" href="vg.ico" type="image/x-icon">
+    <script>
+        window.onscroll = function () {
+            toggleBackToTopButton();
+        };
+
+        function toggleBackToTopButton() {
+            var backToTopButton = document.getElementById("back-to-top-btn");
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        }
+
+        function scrollToTop() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1 class="proname">Videogame Sales Analysis</h1>
+    </header>
+    <div class="intro">
+        <div class="content" style="margin-left:20px">
+            <h2 style="margin: auto;text-align: center;">Introduction</h2>
+            <p>
+                Hey gamers! 🎮 Get ready for an exciting ride as we take you through our "Videogame Sales Analysis" project! 🚀
+                <br>
+                <br>
+                In this thrilling journey, we'll be diving deep into a massive dataset loaded with juicy details about your favorite
+                video games. We've got the names, platforms, genres, and release years of these digital wonders, along with valuable
+                insights on sales across different regions.
+                <br>
+                <br>
+                But that's not all! We've got secret scores from Metacritic, revealing how critics and the gaming community rate these
+                games. So, get ready to uncover the hidden gems and the legendary champions! 💎
+                <br>
+                <br>
+                With Python as our trusty sidekick, we'll embark on a mission to answer some burning questions that will rock your
+                gaming world! We'll reveal the most liked genre, the most popular gaming platforms, and the developers who've released
+                highly-rated games that won't let you put down the controller. 🌟
+                <br>
+                <br>
+                Oh, and we'll time travel through gaming history to find the year with the highest number of game releases. And you know
+                what? We'll even connect all our findings to the future of game development! 🚀🔮
+                <br>
+                <br>
+                So, buckle up, gamers! Our "Videogame Sales Analysis" is about to blow your minds and level up your gaming knowledge.
+                Let's go and conquer the gaming universe together! 🎉
+            </p>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="about"
+        style="background-color: #f9f9f9; border-radius: 10px; padding: 30px; margin-top: 30px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);text-align: center;">
+        <h2>About the Dataset</h2>
+        <p>The "Videogame Sales Analysis" dataset is a treasure trove of information about video games from various platforms. It
+            contains valuable insights to unravel the gaming world's mysteries. The dataset consists of essential columns that shed
+            light on each game's characteristics and popularity. These columns include the game's name, the platform it runs on, its
+            release year, genre, and the responsible publisher. Moreover, it provides comprehensive sales figures, indicating the
+            number of units sold in North America, Europe, Japan, and other regions, as well as the total global sales.
+            Additionally, the dataset offers a glimpse into the critical and user ratings, showcasing the overall reception and
+            appreciation of each game. This comprehensive collection of data opens up a world of possibilities to explore and
+            analyze the trends and patterns that shape the gaming industry.
+        </p>
+        <h3>The dataset contains the following columns to work on.</h3>
+        <table>
+            <tr>
+                <th><strong>Field</strong></th>
+                <th><strong>Description</strong></th>
+            </tr>
+            <tr>
+                <td >Name</td>
+                <td >The name of a video game.</td>
+            </tr>
+            <tr>
+                <td>Platform</td>
+                <td>The platform (PC, PS4, XBox, etc.) for which a game is released.</td>
+            </tr>
+            <tr>
+                <td>Year</td>
+                <td>The release year of a video game.</td>
+            </tr>
+            <tr>
+                <td>Genre</td>
+                <td>The genre of a video game.</td>
+            </tr>
+            <tr>
+                <td>Publisher</td>
+                <td>The publisher of a video game.</td>
+            </tr>
+            <tr>
+                <td>NA_Sales</td>
+                <td>Approximately, the total number of units sold (in million) of a video game in
+                    North America.</td>
+            </tr>
+            <tr>
+                <td>EU_Sales</td>
+                <td>Approximately, the total number of units sold (in million) of a video game in
+                    Europe.</td>
+            </tr>
+            <tr>
+                <td>JP_Sales</td>
+                <td>Approximately, the total number of units sold (in million) of a video game in
+                    Japan.</td>
+            </tr>
+            <tr>
+                <td>Other_Sales</td>
+                <td>Approximately, the total number of units sold (in million) of a video game in
+                    the rest of the world.</td>
+            </tr>
+            <tr>
+                <td>Global_Sales</td>
+                <td>Approximately, the total number of units sold (in million) of a video game
+                    all over the world.</td>
+            </tr>
+            <tr>
+                <td>Critic_score</td>
+                <td>Aggregate score compiled by Metacritic staff.</td>
+            </tr>
+            <tr>
+                <td>User_score</td>
+                <td>Score by Metacritic's subscribers.</td>
+            </tr>
+            <tr>
+                <td>User_count</td>
+                <td>Number of users who gave the user_score.</td>
+            </tr>
+            <tr>
+                <td>Developer</td>
+                <td>Party responsible for creating the game.</td>
+            </tr>
+            <tr>
+                <td>Rating</td>
+                <td>The ESRB ratings.</td>
+            </tr>
+        </table>
+    </div>
+
+    <br>
+    <br>
+    <br>
+
+
+    <div class="question-section">
+        <h2 class="ana">Questions</h2>
+        <ol class="question-box">
+            <li><a href="#q1">Which genre of video games is the most liked?</a>
+            </li>
+            <li><a href="#q2">Which platform is the most used for playing
+                    games?</a></li>
+            <li><a href="#q3">Which developer has released the most
+                    highly-rated games?</a></li>
+            <li><a href="#q4">Which year had the highest number of game
+                    releases?</a></li>
+            <li><a href="#q5">What are the most liked and most disliked video
+                    games?</a></li>
+            <li><a href="#q6">How does the distribution of sales vary across
+                    different regions?</a></li>
+            <li><a href="#q7">Which year had the highest total global
+                    sales?</a></li>
+            <li><a href="#q8">Which developer has released the most games?</a>
+            </li>
+            <li><a href="#q9">What are the highest rated games in each
+                    genre?</a></li>
+            <li><a href="#q10">What are the highest rated publishers in each
+                    genre?</a></li>
+            <li><a href="#q11">What is the best game in each ESRB Rating?</a>
+            </li>
+            <li><a href="#q12">What are some popular games in PC, PS4, GBA,
+                    X360?</a></li>
+            <li><a href="#q13">What are the most sold games in each region?</a>
+            </li>
+            <li><a href="#q14">Which genre of video games has the most
+                    sales?</a></li>
+            <li><a href="#q15">How do the answers to the above 14 questions aid in game development?</a></li>
+        </ol>
+    </div>
+
+
+    <section class="question-section">
+        <h1 style="text-align: center;" class="ana">Analysis</h2>
+            <br>
+            <br>
+            <div style="display: flex; justify-content: center; align-items: center;">
+                <button style="border: 3px solid black;" class="dashboard" onclick="window.location.href='vgdash.html'">>> ACCESS THE
+                    ANALYSIS DASHBOARD HERE <<</button>
+            </div>
+            <div class="question-box" id="q1">
+                <h2 class="question-heading">Question 1: Which genre of videogames is the most liked?</h2>
+                <div class="question-content">
+                    <strong>Significance:</strong> Understanding the preferred genre of video games is crucial as it reflects players' deeper connections and inclinations. Knowing the most popular genre can aid developers in making informed decisions about where to invest their efforts in game development.<br><br> <strong>Approach:</strong> To determine the most liked genre of video games, we will utilize a bar graph that compares different genres against their corresponding UserScores or CriticScores. By doing so, we can pinpoint the genre with the highest ratings, indicating the one that resonates the most with players and critics alike. This analysis will provide valuable insights for developers and the gaming community.<br><br><strong>Graphical Visualization</strong>
+                </div>
+                <div>
+                    <img src="op1.png" alt="" class="graph-content">
+                </div>
+                <div>
+                    <img src="op1_2.png" alt="" class="graph-content">
+                </div>
+                <p>
+                    <strong">Result: </strong> From the two graphs, we can see that
+                    Role-Playing games are the most rated games among various players. <br><br>
+                </p>
+            </div>
+            <div class="question-box" id="q2">
+                <h2 class="question-heading">Question 2: Which platform is the most used for playing games?</h2>
+                <div class="question-content">
+                    <p><strong>Significance:</strong> Understanding the most used gaming platform is crucial for game developers as it directly influences their target audience and game distribution strategies. Knowing the platform preferences of players allows developers to optimize their game's compatibility, tailor user interfaces, and offer a seamless gaming experience. This knowledge empowers game developers to prioritize platform-specific features and make informed decisions that resonate with their player base.<br><br><strong>Approach:</strong> To know which platform is most used
+                        for playing games, we can plot the graph between Number of users vs the platform used. This
+                        determines the most used platform for gaming. <br><br><strong>Graphical Visualization</strong></p>
+                </div>
+                <div>
+                    <img src="op2.png" alt="" class="graph-content">
+                </div>
+                <p><strong>Result: </strong> As we can see from the graph, PC is the
+                    most used platform for gaming.</p>
+            </div>
+            <div class="question-box" id="q3">
+                <h2 class="question-heading">Question 3: Which developer has released the most highly-rated games?(with
+                    a critic score above 90)</h2>
+                <div class="question-content">
+                    <p><strong>Significance:</strong> Identifying the developer with the most highly-rated games is of paramount importance for game enthusiasts and buyers. A critic score above 90 serves as a robust benchmark for judging games from a critical perspective. Players often rely on these ratings to make informed decisions about purchasing games that offer exceptional gameplay, storytelling, and overall gaming experience. For game developers, achieving high critic scores not only boosts their reputation but also attracts a larger player base, leading to greater success in the competitive gaming market.</p>
+                    <br><br>
+                    <strong>Approach: </strong> There are two ways to look at this
+                    problem. One by graphical analysis and other by dataset skimming. We can plot the graph between
+                    number of highly rated games (critic score above 90) vs the top 3 developers. This gives us a
+                    solution and to find out which games are top for each developer, we need to do dataset skimming.
+                    Both of which are shown below.
+                </div>
+                <div>
+                    <img src="op3.png" alt="" class="graph-content">
+                </div>
+                <div class="tables">
+                    <h3>Rockstar North</h3>
+                    <table>
+                        <tr>
+                            <th>
+                                Game
+                            </th>
+                            <th>
+                                Rating
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                Grand Theft Auto V (PC)
+                            </td>
+                            <td>
+                                97.0
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Grand Theft Auto: San Andreas (PC)
+                            </td>
+                            <td>
+                                95.0
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Grand Theft Auto V (PS4)
+                            </td>
+                            <td>
+                                97.0
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Grand Theft Auto: Vice City (PC)
+                            </td>
+                            <td>
+                                95.0
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Grand Theft Auto V (X360)
+                            </td>
+                            <td>
+                                97.0
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Grand Theft Auto IV (PC)
+                            </td>
+                            <td>
+                                98.0
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Grand Theft Auto IV (PS4)
+                            </td>
+                            <td>
+                                98.0
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Grand Theft Auto V (XOne)
+                            </td>
+                            <td>
+                                97.0
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Grand Theft Auto: San Andreas (PS4)
+                            </td>
+                            <td>
+                                93.0
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Grand Theft Auto V (PS3)
+                            </td>
+                            <td>
+                                96.0
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Grand Theft Auto: San Andreas (X360)
+                            </td>
+                            <td>
+                                93.0
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Grand Theft Auto: Vice City (PS3)
+                            </td>
+                            <td>
+                                94.0
+                            </td>
+                        </tr>
+                    </table>
+                    <h3>Nintendo</h3>
+                    <table>
+                        <tr>
+                            <th>
+                                Game
+                            </th>
+                            <th>
+                                Rating
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                Mario Kart DS
+                            </td>
+                            <td>
+                                91.0
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Super Mario Galaxy
+                            </td>
+                            <td>
+                                97.0
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                The Legend of Zelda: Twilight Princess
+                            </td>
+                            <td>
+                                95.0
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Super Mario Sunshine
+                            </td>
+                            <td>
+                                92.0
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                The Legend of Zelda: The Wind Waker
+                            </td>
+                            <td>
+                                96.0
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Super Mario 3D World
+                            </td>
+                            <td>
+                                93.0
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                The Legend of Zelda: Skyward Sword
+                            </td>
+                            <td>
+                                93.0
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                The Legend of Zelda: A Link Between Worlds
+                            </td>
+                            <td>
+                                91.0
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Metroid Fusion
+                            </td>
+                            <td>
+                                92.0
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                The Legend of Zelda: Twilight Princess
+                            </td>
+                            <td>
+                                96.0
+                            </td>
+                        </tr>
+                    </table>
+                    <h3>BioWare</h3>
+                    <table>
+                        <tr>
+                            <th>
+                                Game
+                            </th>
+                            <th>
+                                Rating
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                Mass Effect 2
+                            </td>
+                            <td>
+                                96.0
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Mass Effect 3
+                            </td>
+                            <td>
+                                93.0
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Mass Effect
+                            </td>
+                            <td>
+                                91.0
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Star Wars: Knights of the Old Republic
+                            </td>
+                            <td>
+                                94.0
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Mass Effect 2
+                            </td>
+                            <td>
+                                94.0
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Mass Effect 3
+                            </td>
+                            <td>
+                                93.0
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Dragon Age: Origins
+                            </td>
+                            <td>
+                                91.0
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Mass Effect 2
+                            </td>
+                            <td>
+                                94.0
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Star Wars: Knights of the Old Republic
+                            </td>
+                            <td>
+                                93.0
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Neverwinter Nights
+                            </td>
+                            <td>
+                                91.0
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <p><strong>Result: </strong>The developer who released the highest
+                    rated games is Rockstar North</p>
+            </div>
+            <div class="question-box" id="q4">
+                <h2 class="question-heading">Question 4: Which year had the highest number of game releases?</h2>
+                <div class="question-content">
+                    <p>
+                        <strong>Significance:</strong> Identifying the year with the highest number of game releases holds immense significance for the gaming industry. It offers valuable insights into the trends and factors that led to a significant boom in game sales during that specific period. Understanding the factors that contributed to increased game releases can help game developers, publishers, and corporations make strategic decisions to replicate successful trends and capitalize on the potential for higher revenue and market growth. This knowledge allows the gaming industry to align their resources and efforts effectively, ensuring they stay ahead of the game in this dynamic and competitive market.
+                        <br><br>
+                        <strong>Approach:</strong> To determine the year with the highest number of game releases, we employ a bar graph, plotting the number of game
+                        releases against each year. This graphical representation provides a clear visual indication of the peak year when the
+                        gaming industry witnessed a substantial surge in game launches.<br><br>
+                        <strong>Graphical Visualization</strong>
+                    </p>
+                </div>
+                <div>
+                    <img src="op4.png" alt="" class="graph-content">
+                </div>
+                <div>
+                    <strong>Result:</strong> From the graph, we can see that 2009 is
+                    the year which had the maximum number of sales with 1011 sales.
+                </div>
+            </div>
+            <div class="question-box" id="q5"
+                style="background-color: whitesmoke; border-radius: 10px; padding: 3%; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); display: flex; flex-direction: column; align-items: center; text-align: center; margin-top: 30px;">
+                <h2 class="question-heading">Question 5: What are the most liked and most disliked videogames?</h2>
+                <div class="question-content">
+                    <p>
+                        <strong>Significance:</strong>  Understanding the preferences of players is paramount in evaluating the success of a video game. The user score, which reflects the players' experience and satisfaction, holds immense significance as it provides valuable insights into how well-received a game is among its target audience. By identifying the most liked and most disliked video games based on user scores, game developers and publishers can gauge the players' sentiments and tailor future game development to better cater to their preferences. Additionally, this knowledge aids in building strong relationships with players, fostering trust and loyalty in the gaming community.
+                    </p>
+                    <strong>Result</strong>
+                </div>
+                <div class="question-box"
+                    style="background-color: whitesmoke; border-radius: 10px; padding: 3%; box-shadow: 0 2px 4px rgba(0, 0, 0, 1); display: flex; flex-direction: column; align-items: center; text-align: center; margin-top: 30px; margin: 0 auto;">
+                    <h2 style="margin-bottom: 15px;">Most Liked Game</h2>
+                    <p>Name: Breath of Fire III</p>
+                    <p>User Score: 9.7</p>
+                </div>
+                <br>
+                <div class="question-box"
+                    style="background-color: whitesmoke; border-radius: 10px; padding: 3%; box-shadow: 0 2px 4px rgba(0, 0, 0, 1); display: flex; flex-direction: column; align-items: center; text-align: center; margin-top: 30px; margin: 0 auto;">
+                    <h2 style="margin-bottom: 15px;">Most Disliked Game</h2>
+                    <p>Name: My Little Pony: Pinkie Pie's Party</p>
+                    <p>User Score: 0.0</p>
+                </div>
+            </div>
+
+
+            <div class="question-box" id="q6">
+                <h2 class="question-heading">Question 6: How does the distribution of sales vary across different
+                    regions?</h2>
+                <div class="question-content">
+                    <p>
+                        <strong>Significance:</strong>  Understanding the distribution of video game sales across different regions is crucial for game developers and publishers seeking to optimize their market strategies. It allows them to identify regions with stronger gaming economies and better market potential. By analyzing sales distribution, developers can tailor their marketing efforts, localization, and game content to better suit the preferences and demands of specific regions. This knowledge enables gaming companies to capitalize on growth opportunities in high-performing markets and enhance their overall global market reach.
+                        <br><br>
+                        <strong>Approach:</strong> To analyze the distribution of sales across different regions, we can employ data visualization techniques such as a bar graph or a pie chart. By plotting the total sales of video games against each region, we can visualize the sales performance in different areas. This graphical representation offers a comprehensive understanding of which regions have a significant share in the overall gaming market and which regions might require more focused attention to improve sales performance. 
+                    </p>
+                </div>
+                <div>
+                    <img src="op5.png" alt="" class="graph-content">
+                </div>
+                <div>
+                    <img src="op5_1.png" alt="" class="graph-content">
+                </div>
+                <div>
+                    <strong>Result:</strong> Maximum number of sales in North
+                    America, Least number of sales in Japan
+                </div>
+            </div>
+            <div class="question-box" id="q7">
+                <h2 class="question-heading">Question 7: Which year had the highest total global sales?</h2>
+                <div class="question-content">
+                    <p>
+                        <strong>Significance:</strong> Identifying the year with the highest total global sales is pivotal for gauging a video game's widespread acclaim and success across the gaming community. Global sales figures serve as a testament to a game's universal appeal and indicate its ability to resonate with players worldwide. For game developers, achieving high total global sales is a testament to their expertise in crafting captivating and inclusive gameplay experiences. It showcases their ability to create games that transcend cultural and geographical boundaries, fostering a positive reputation and a loyal global player base.
+                        <br><br>
+                        <strong>Approach:</strong> To determine the year with the highest total global sales, we will use a line plot that showcases the trend of total
+                        global sales over the years. This visual representation allows us to observe fluctuations and identify the peak year
+                        with the highest global sales. By analyzing this data, we can gain insights into the factors that contributed to the
+                        game's widespread success during that specific year.
+                    </p>
+                </div>
+                <div>
+                    <img src="op6.png" alt="" class="graph-content">
+                </div>
+                <div>
+                    <strong>Result:</strong> From the lineplot, we can see that the
+                    year with maximum number of sales is 2008 with approximately 588.34 Million sales
+                </div>
+            </div>
+            <div class="question-box" id="q8">
+                <h2 class="question-heading">Question 8: Which developer has released the most number of games in this
+                    time period?</h2>
+                <div class="question-content">
+                    <p>
+                        <strong>Significance:</strong>  Unveiling the developer with the highest number of game releases offers valuable insights into their influence and prominence in the gaming landscape. Understanding a developer's prolific track record can shed light on their experience, expertise, and contributions to the gaming industry. This information is crucial for industry analysts, investors, and gaming enthusiasts alike, as it helps evaluate a developer's reputation, market presence, and potential for future success. Additionally, identifying the top developers in terms of game releases can provide an overview of industry trends and innovation, fostering a deeper understanding of the gaming ecosystem.
+                        <br><br>
+                        <strong>Approach:</strong> To determine the developer with the most game releases in the given time period, we apply data grouping based on the 'Developer' column. By calculating the count of games for each developer, we can ascertain the total number of releases for each of them. Sorting the resulting counts in descending order allows us to identify the top developers. To present a clear comparison, we create a bar plot showcasing the number of games released by the top 10 developers. This visual representation offers a concise overview of the gaming industry's most prolific developers and their contributions to the ever-evolving world of gaming.
+                    </p>
+                </div>
+                <div>
+                    <img src="op7.png" alt="" class="graph-content">
+                </div>
+                <div>
+                    <strong>Result:</strong> From the barplot, we can see that
+                    Ubisoft has made the most games in this time period with 200 games.
+                </div>
+            </div>
+            <div class="question-box" id="q9">
+                <h2 class="question-heading">Question 9: What are the highest rated games in each genre?</h2>
+                <div class="question-content">
+                    <p>
+                        <strong>Significance:</strong> Revealing the highest rated games in each gaming genre is of great value to both players and industry professionals. For gamers, this information enables them to make informed choices about which games to play, tailored to their preferred genres. It showcases standout titles that have received critical acclaim, ensuring players have access to exceptional gaming experiences. Moreover, it recognizes the commendable efforts of game developers within specific genres, spotlighting their talent and contributions to the gaming world. For industry professionals and researchers, this data serves as a valuable reference for analyzing trends and patterns in game ratings across various genres, helping them better understand players' preferences and industry dynamics.
+                        <br><br>
+                        <strong>Approach:</strong> To identify the highest rated games in each genre, we group the dataset by the 'Genre' column and iterate through each
+                        group to find the game with the highest critic score for each genre. This approach allows us to create a new DataFrame
+                        containing the top-rated games for each genre, along with their respective critic scores. By presenting this
+                        information, we provide a comprehensive overview of the best-performing games in various genres, showcasing the
+                        exceptional titles that have garnered critical acclaim. <br><br><strong>Graphical representation</strong>
+                    </p>
+                </div>
+                <div>
+                    <img src="op8.png" alt="" class="graph-content">
+                </div>
+                <div>
+                    <strong>Result:</strong>
+                    <table>
+                        <caption>Highest Rated Games in Each Genre</caption>
+                        <thead>
+                            <tr>
+                                <th>Genre</th>
+                                <th>Game</th>
+                                <th>Rating</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Action genre</td>
+                                <td>Grand Theft Auto IV</td>
+                                <td>98.0</td>
+                            </tr>
+                            <tr>
+                                <td>Adventure genre</td>
+                                <td>Metal Gear Solid: The Legacy Collection</td>
+                                <td>93.0</td>
+                            </tr>
+                            <tr>
+                                <td>Fighting genre</td>
+                                <td>SoulCalibur</td>
+                                <td>98.0</td>
+                            </tr>
+                            <tr>
+                                <td>Misc genre</td>
+                                <td>Rock Band 3</td>
+                                <td>93.0</td>
+                            </tr>
+                            <tr>
+                                <td>Platform genre</td>
+                                <td>Super Mario Galaxy</td>
+                                <td>97.0</td>
+                            </tr>
+                            <tr>
+                                <td>Puzzle genre</td>
+                                <td>World of Goo</td>
+                                <td>90.0</td>
+                            </tr>
+                            <tr>
+                                <td>Racing genre</td>
+                                <td>Gran Turismo</td>
+                                <td>96.0</td>
+                            </tr>
+                            <tr>
+                                <td>Role-Playing genre</td>
+                                <td>Mass Effect 2</td>
+                                <td>96.0</td>
+                            </tr>
+                            <tr>
+                                <td>Shooter genre</td>
+                                <td>Metroid Prime</td>
+                                <td>97.0</td>
+                            </tr>
+                            <tr>
+                                <td>Simulation genre</td>
+                                <td>The Sims Deluxe</td>
+                                <td>92.0</td>
+                            </tr>
+                            <tr>
+                                <td>Sports genre</td>
+                                <td>Tony Hawk's Pro Skater 2</td>
+                                <td>98.0</td>
+                            </tr>
+                            <tr>
+                                <td>Strategy genre</td>
+                                <td>Sid Meier's Civilization IV</td>
+                                <td>94.0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+            <div class="question-box" id="q10">
+                <h2 class="question-heading">Question 10: What is the most common ESRB rating among the games?</h2>
+                <div class="question-content">
+                    <p>
+                        <strong>Significance:</strong> This information aids gamers
+                        in making informed choices aligned with their preferred content ratings. It also helps game
+                        developers and publishers assess the market demand for games with different ESRB ratings,
+                        contributing to strategic
+                        decision-making. Furthermore, it enables researchers and industry analysts to identify patterns
+                        and changes in ESRB
+                        ratings over time, facilitating comprehensive studies on the impact of content ratings in the
+                        gaming landscape.
+                        <br><br>
+                        <strong>Approach:</strong> The code counts the occurrences
+                        of each ESRB rating in the 'Rating' column of the dataset. It then determines the most common
+                        ESRB rating by identifying the rating with the highest count. Finally, it prints the most common
+                        ESRB rating among the games. This approach allows for the quick identification of the prevailing
+                        ESRB rating in the dataset, providing insights into the dominant content rating among the games
+                        analyzed.
+                    </p>
+                </div>
+                <div>
+                    <img src="op9.png" alt="" class="graph-content">
+                </div>
+                <div>
+                    <strong>Result:</strong> The most common ESRB rating among the
+                    games is: E
+                </div>
+            </div>
+
+
+            <div class="question-box" id="q11">
+                <h2 class="question-heading">Question 11: What is the best game in each ESRB Rating?</h2>
+                <div class="question-content">
+                    <p>
+                        <strong>Significance:</strong> This information helps gamers
+                        identify highly acclaimed games that align with their preferred content ratings. It also
+                        recognizes the achievements of game developers in delivering exceptional experiences across
+                        diverse content categories. Additionally, it serves as a reference for industry professionals
+                        and researchers to analyze trends and patterns in game quality based on ESRB ratings,
+                        facilitating a deeper understanding of player preferences and market dynamics.
+                        <br><br>
+                        <strong>Approach:</strong> The approach depends on the
+                        identification of the best game within each ESRB rating category based on the highest critic
+                        score. By grouping the dataset and extracting the game with the maximum critic score for each
+                        rating, it provides a quick overview of the standout games within different ESRB ratings,
+                        highlighting their respective critic scores.
+                    </p>
+                </div>
+                <div>
+                    <strong>Result:</strong>
+                    <table>
+                        <tr>
+                            <th>Rating</th>
+                            <th>Best Game</th>
+                            <th>Critic Score</th>
+                        </tr>
+                        <tr>
+                            <td>AO</td>
+                            <td>Grand Theft Auto: San Andreas</td>
+                            <td>93.0</td>
+                        </tr>
+                        <tr>
+                            <td>E</td>
+                            <td>Super Mario Galaxy</td>
+                            <td>97.0</td>
+                        </tr>
+                        <tr>
+                            <td>E10+</td>
+                            <td>Portal 2</td>
+                            <td>95.0</td>
+                        </tr>
+                        <tr>
+                            <td>EC</td>
+                            <td>Nickelodeon Team Umizoomi</td>
+                            <td>68.9</td>
+                        </tr>
+                        <tr>
+                            <td>K-A</td>
+                            <td>PaRappa The Rapper</td>
+                            <td>92.0</td>
+                        </tr>
+                        <tr>
+                            <td>M</td>
+                            <td>Grand Theft Auto IV</td>
+                            <td>98.0</td>
+                        </tr>
+                        <tr>
+                            <td>RP</td>
+                            <td>Supreme Ruler: Cold War</td>
+                            <td>63.0</td>
+                        </tr>
+                        <tr>
+                            <td>T</td>
+                            <td>Tony Hawk's Pro Skater 2</td>
+                            <td>98.0</td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+            <div class="question-box" id="q12">
+                <h2 class="question-heading">Question 12: What are some popular games in PC, PS4, GBA, X360?</h2>
+                <div class="question-content">
+                    <p>
+                        <strong>Significance:</strong> It allows gamers and
+                        enthusiasts to explore popular games within specific platforms. By identifying popular games in
+                        PC, PS4, GBA, and X360, players can discover highly acclaimed titles and make informed decisions
+                        about the games they may want to play on their preferred platforms. Additionally, it provides
+                        insights into the gaming preferences and trends for each platform, highlighting the impact of
+                        platform-specific titles and fostering discussions around the popularity and impact of games
+                        within different gaming communities.
+                        <br><br>
+                        <strong>Approach:</strong> This approach allows for the
+                        identification of the three most popular games for each platform based on global sales. By
+                        filtering the dataset, sorting it, and grouping it by platform, the code retrieves the top games
+                        and presents them in a readable format. It provides insights into the popular games within each
+                        platform, facilitating discussions and comparisons among gamers and enthusiasts.
+                    </p>
+                </div>
+                <div>
+                    <img src="op10.png" alt="" class="graph-content">
+                </div>
+                <div>
+                    <strong>Result:</strong>
+                    <table>
+                        <caption>Top Games</caption>
+                        <thead>
+                            <tr>
+                                <th>Platform</th>
+                                <th>Game</th>
+                                <th>Global Sales (in Million)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>PC</td>
+                                <td>The Sims 3</td>
+                                <td>8.01</td>
+                            </tr>
+                            <tr>
+                                <td>PC</td>
+                                <td>World of Warcraft</td>
+                                <td>6.29</td>
+                            </tr>
+                            <tr>
+                                <td>PC</td>
+                                <td>Diablo III</td>
+                                <td>5.14</td>
+                            </tr>
+                            <tr>
+                                <td>PS4</td>
+                                <td>Grand Theft Auto V</td>
+                                <td>12.61</td>
+                            </tr>
+                            <tr>
+                                <td>PS4</td>
+                                <td>FIFA 16</td>
+                                <td>8.57</td>
+                            </tr>
+                            <tr>
+                                <td>PS4</td>
+                                <td>Call of Duty: Advanced Warfare</td>
+                                <td>7.66</td>
+                            </tr>
+                            <tr>
+                                <td>GBA</td>
+                                <td>Pokémon Emerald Version</td>
+                                <td>6.41</td>
+                            </tr>
+                            <tr>
+                                <td>GBA</td>
+                                <td>Super Mario Advance</td>
+                                <td>5.49</td>
+                            </tr>
+                            <tr>
+                                <td>GBA</td>
+                                <td>Mario Kart: Super Circuit</td>
+                                <td>5.47</td>
+                            </tr>
+                            <tr>
+                                <td>X360</td>
+                                <td>Kinect Adventures!</td>
+                                <td>21.81</td>
+                            </tr>
+                            <tr>
+                                <td>X360</td>
+                                <td>Grand Theft Auto V</td>
+                                <td>16.27</td>
+                            </tr>
+                            <tr>
+                                <td>X360</td>
+                                <td>Call of Duty: Modern Warfare 3</td>
+                                <td>14.73</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+            <div class="question-box" id="q13">
+                <h2 class="question-heading">Question 13: What are the most sold games in each region?</h2>
+                <div class="question-content">
+                    <p>
+                        <strong>Significance:</strong> By identifying the most sold
+                        games in each region, it provides insights into the preferences and market dynamics of different
+                        geographical areas. This information is valuable for game developers, publishers, and marketers
+                        to tailor their strategies and offerings to specific regions, ensuring they align with the
+                        preferences and demands of local gaming audiences. Additionally, it allows gamers and
+                        enthusiasts to explore popular games in different regions, fostering discussions and comparisons
+                        of gaming trends on a regional level.
+                        <br><br>
+                        <strong>Approach:</strong> This approach identifies the most
+                        popular game in each region by finding the maximum sales across different regions and grouping
+                        the dataset accordingly. It provides a concise way to determine the games with the highest sales
+                        within specific regions, enabling insights into regional preferences and market performance.
+                    </p>
+                </div>
+                <div>
+                    <img src="op11.png" alt="" class="graph-content">
+                </div>
+                <div>
+                    <strong>Result:</strong>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Region</th>
+                                <th>Game</th>
+                                <th>Maximum Sales (in Million)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>EU_Sales</td>
+                                <td>Brain Age: Train Your Brain in Minutes a Day</td>
+                                <td>9.2</td>
+                            </tr>
+                            <tr>
+                                <td>JP_Sales</td>
+                                <td>Animal Crossing: Wild World</td>
+                                <td>5.33</td>
+                            </tr>
+                            <tr>
+                                <td>NA_Sales</td>
+                                <td>Wii Sports</td>
+                                <td>41.36</td>
+                            </tr>
+                            <tr>
+                                <td>Other_Sales</td>
+                                <td>Grand Theft Auto: San Andreas</td>
+                                <td>10.57</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+            <div class="question-box" id="q14">
+                <h2 class="question-heading">Question 14: Which genre of videogames has the most sales?</h2>
+                <div class="question-content">
+                    <p>
+                        <strong>Significance:</strong> Understanding the genre with
+                        the highest sales allows game developers, publishers, and marketers to make informed decisions
+                        regarding game production, marketing strategies, and resource allocation. It provides valuable
+                        insights into consumer preferences, market trends, and potential revenue opportunities.
+                        Moreover, it aids gamers in exploring and discovering popular genres, guiding their choices when
+                        seeking games that align with their interests and preferences.
+                        <br><br>
+                        <strong>Approach:</strong> By sorting the genres based on
+                        their total sales, we can provide a clear comparison and determination of the genre that has the
+                        most significant commercial success. This information is valuable for game developers,
+                        publishers, marketers, and analysts to understand the popularity and market demand for different
+                        genres within the gaming industry.
+                    </p>
+                </div>
+                <div>
+                    <img src="op12.png" alt="" class="graph-content">
+                </div>
+                <div>
+                    <strong>Result:</strong> The genre with the most sales is:
+                    Action
+                </div>
+            </div>
+            <div class="question-box" id="q15">
+                <h2 class="question-heading">Question 15: How do the answers to the 14 questions aid in game
+                    development?</h2>
+                <div class="question-content" style="text-align: left;">
+                    <p>
+                        As a developer, the answers to the 14 questions can provide valuable insights and aid in making
+                        a perfect
+                        game. Here's how:
+                    </p>
+                    <ol>
+                        <li>Understanding the most liked genre of videogames helps in identifying popular trends and
+                            preferences
+                            among players, enabling you to create a game that aligns with their interests.</li>
+                        <li>Knowing the most used platform for playing games allows you to target your development
+                            efforts towards
+                            that platform, maximizing the reach and potential player base for your game.</li>
+                        <li>Recognizing the developer who has released the most highly-rated games with critic scores
+                            above 90
+                            offers inspiration and benchmarks for achieving excellence in game development.</li>
+                        <li>Identifying the year with the highest number of game releases helps you gauge market
+                            saturation and plan
+                            game release timing strategically to minimize competition.</li>
+                        <li>Learning about the most liked and most disliked videogames provides an understanding of
+                            player
+                            preferences, allowing you to incorporate popular features and avoid pitfalls in game design.
+                        </li>
+                        <li>Analyzing the distribution of sales across different regions helps in tailoring marketing
+                            strategies and
+                            localization efforts to target specific regions effectively.</li>
+                        <li>Knowing the year with the highest total global sales gives insights into market trends and
+                            potential
+                            opportunities for success.</li>
+                        <li>Identifying the developer who has released the most games showcases their experience and
+                            expertise,
+                            providing inspiration and potential collaboration opportunities.</li>
+                        <li>Understanding the highest rated games in each genre provides benchmarks for quality and
+                            innovation,
+                            guiding your efforts in creating a game that stands out within a specific genre.</li>
+                        <li>Recognizing the most common ESRB rating among the games ensures compliance with industry
+                            standards and
+                            helps in targeting the appropriate audience.</li>
+                        <li>Identifying the best game in each ESRB rating allows you to study successful titles within
+                            specific
+                            content ratings and learn from their achievements.</li>
+                        <li>Exploring popular games in PC, PS4, GBA, and X360 provides insights into player preferences
+                            on different
+                            platforms, helping you understand and cater to the target audience of those platforms.</li>
+                        <li>Knowing the most sold game in each region helps you tailor your game's marketing and
+                            localization
+                            efforts to specific regions, increasing the chances of success in those markets.</li>
+                        <li>Understanding the genre of videogames with the most sales allows you to focus your resources
+                            and efforts
+                            on genres that have proven commercial success, maximizing your game's potential for
+                            financial returns.
+                        </li>
+                    </ol>
+                    <p>
+                        Overall, these questions provide valuable market insights, player preferences, and industry
+                        benchmarks that
+                        can guide you in making informed decisions throughout the game development process, increasing
+                        the chances
+                        of creating a perfect game that resonates with players and achieves success in the competitive
+                        gaming
+                        landscape.
+                    </p>
+                </div>
+            </div>
+
+    </section>
+    <button id="back-to-top-btn" onclick="scrollToTop()">Back to Top</button>
+    <footer>
+        <div class="footer-content">
+            <p>Developed by V. Srikar, N.Srikar, Y. Pratiek, A. Phani Charan</p>
+            <p>Roll Numbers: 22BD1A1264, 22BD1A1255, 22BD1A1253, 22BD1A1201</p>
+            <a href="https://srikarveluvali.github.io/dataanalysis" class="btn">Go to Homepage</a>
+            <a href="https://github.com/SrikarVeluvali/dataanalysis" target="_blank" class="btn">Visit GitHub</a>
+        </div>
+    </footer>
+
+</body>
+
+</html>

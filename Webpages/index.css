@@ -1,0 +1,210 @@
+* {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body::-webkit-scrollbar {
+  width: 0.6em;
+  background-color: #6c8eb0;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #96aabc;
+  border-radius: 30px;
+  border: 0.2px solid black;
+}
+
+body::-webkit-scrollbar-thumb:active {
+  background-color: #2b395e;
+}
+
+body::-webkit-scrollbar-button:start:decrement,
+body::-webkit-scrollbar-button:end:increment {
+  display: block;
+  background-color: #96aabc;
+  border-radius: 30px;
+  border: 0.2px solid black;
+}
+
+body::-webkit-scrollbar-button:start:decrement {
+  background-color: #96aabc;
+  border-radius: 30px;
+  border: 0.2px solid black;
+}
+
+body::-webkit-scrollbar-button:start:active {
+  background-color: #2b395e;
+}
+
+body::-webkit-scrollbar-button:end:increment {
+  background-color: #96aabc;
+  border-radius: 30px;
+  border: 0.2px solid black;
+}
+
+body::-webkit-scrollbar-button:end:active {
+  background-color: #2b395e;
+}
+
+h1 {
+  text-align: center;
+}
+
+body {
+  background: linear-gradient(300deg, #4A55A2, #7895CB, #A0BFE0);
+  background-size: 800% 800%;
+  animation: gradient-animation 18s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.proname {
+  background-image: url('indh.jpg');
+  background-position: center;
+  background-size: cover;
+  border-radius: 10px;
+  padding: 3%;
+  width: 60%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+  color: white;
+  font-size: 35px;
+  text-shadow: -2px 2px 0 #000, 2px 2px 0 #000, 2px -2px 0 #000, -2px -2px 0 #000;
+  transition: transform 0.3s ease;
+}
+
+.proname:hover {
+    transform: scale(1.05);
+}
+
+.intro,
+.what {
+  background-color: whitesmoke;
+  border-radius: 10px;
+  padding: 3%;
+  overflow: hidden;
+  margin-top: 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.intro .content,
+.what .content {
+  width: 65%;
+  font-size: 18px;
+  float: left;
+  font-size: 25px;
+}
+
+.intro .image,
+.what .image {
+  width: 30%;
+  float: right;
+}
+
+.intro img,
+.what img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.box-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 20px auto;
+}
+
+.box {
+  background-color: whitesmoke;
+  border-radius: 10px;
+  padding: 3%;
+  width: 45%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 10px;
+}
+
+.box h2 {
+  margin-bottom: 15px;
+}
+
+.box .image {
+  width: 40%;
+  margin-bottom: 15px;
+}
+
+.box img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.box .content {
+  margin-bottom: 15px;
+}
+
+.box .btn {
+  display: inline-block;
+  background-color: #7895CB;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.box .btn:hover {
+  background-color: #4A55A2;
+}
+
+footer {
+  background-color: whitesmoke;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 30px;
+}
+
+.footer-content {
+  color: #555;
+  font-size: 12px;
+}
+
+.footer-content p {
+  margin: 3px 0;
+}
+
+.footer-content .btn {
+  display: inline-block;
+  background-color: #7895CB;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  margin: 5px;
+}
+
+.footer-content .btn:hover {
+  background-color: #4A55A2;
+}
