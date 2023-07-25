@@ -71,8 +71,7 @@ The answers to the 15 questions provide valuable insights into the video game in
 
 The "Dataset - Extraction, Analysis, and Visualization" project is a comprehensive exploration of the "Video Game Sales Analysis" dataset. By analyzing the data and answering 15 pertinent questions, the project sheds light on player preferences, popular genres, successful games, and regional market dynamics. These insights are highly beneficial for game developers, publishers, and marketers in making strategic decisions and understanding the industry landscape better.
 
-[Link to GitHub Repository](https://github.com/your-username/dataset-analysis-project)
+[Link to GitHub Repository](https://github.com/SrikarVeluvali/dataanalysis)
 
 ---
 
-Note: Remember to replace "your-username" in the GitHub repository link with the actual username of your GitHub account where the project code and analysis are hosted.
