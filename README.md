@@ -2,14 +2,12 @@
 
 ## Project Team
 
-The "Dataset - Extraction, Analysis, and Visualization" project was developed by the following team members from **[Keshav Memorial Institute of Technology]**, [IT-A]:
+**[Keshav Memorial Institute of Technology]**, [IT-A]:
 
 1. **[Srikar Veluvali]** (Roll Number: [22BD1A1264])
 2. **[Srikar Narsingoju]** (Roll Number: [22BD1A1255])
 3. **[Sesha Sai Pratiek Yeggina]** (Roll Number: [22BD1A1253])
-4. **[Anpur Phani Charan]** (Roll Number: [22BD1A1201])
-
-The project team members are all from the same institution and belong to the same section, collaborating effectively to successfully complete the data analysis and visualization project.
+4. **[Anpur Phani Charan]** (Roll Number: [22BD1A1201])\
 
 ## Overview
 
