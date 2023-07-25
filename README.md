@@ -1,5 +1,16 @@
 # Dataset - Extraction, Analysis, and Visualization Project
 
+## Project Team
+
+The "Dataset - Extraction, Analysis, and Visualization" project was developed by the following team members from **[Keshav Memorial Institute of Technology]**, [IT-A]:
+
+1. **[Srikar Veluvali]** (Roll Number: [22BD1A1264])
+2. **[Srikar Narsingoju]** (Roll Number: [22BD1A1255])
+3. **[Sesha Sai Pratiek Yeggina]** (Roll Number: [22BD1A1253])
+4. **[Anpur Phani Charan]** (Roll Number: [22BD1A1201])
+
+The project team members are all from the same institution and belong to the same section, collaborating effectively to successfully complete the data analysis and visualization project.
+
 ## Overview
 
 The "Dataset - Extraction, Analysis, and Visualization" project is a Python-based data analysis venture that focuses on exploring and interpreting the "Video Game Sales Analysis" dataset. This dataset contains valuable information about video games, including their sales figures, ratings, genres, platforms, and more. Through meticulous analysis and visualization, the project aims to answer 15 essential questions related to the dataset. Additionally, it explores the practical implications of these answers in day-to-day life and game development.
