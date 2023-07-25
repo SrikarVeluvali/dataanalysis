@@ -2,12 +2,12 @@
 
 ## Project Team
 
-**[Keshav Memorial Institute of Technology]**, [IT-A]:
+**Keshav Memorial Institute of Technology**, [IT-A]:
 
-1. **[Srikar Veluvali]** (Roll Number: [22BD1A1264])
-2. **[Srikar Narsingoju]** (Roll Number: [22BD1A1255])
-3. **[Sesha Sai Pratiek Yeggina]** (Roll Number: [22BD1A1253])
-4. **[Anpur Phani Charan]** (Roll Number: [22BD1A1201])\
+1. **Srikar Veluvali** (Roll Number: 22BD1A1264)
+2. **Srikar Narsingoju** (Roll Number: 22BD1A1255)
+3. **Sesha Sai Pratiek Yeggina** (Roll Number: 22BD1A1253)
+4. **Anpur Phani Charan** (Roll Number: 22BD1A1201)
 
 ## Overview
 
